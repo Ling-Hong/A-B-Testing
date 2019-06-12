@@ -1,0 +1,42 @@
+---
+title: "Power Analysis"
+output: html_document
+---
+
+Author: Ling Hong  
+Date: 2018/11/13  
+Email: 1feynmanist@gmail.com  
+Description: A/B testing project  
+
+Steps:  
+(1) decide significance level, minimum detectable effect, power  
+(2) calculate sample size  
+(3) check the significance level  
+(4) check the power  
+
+
+```{r}
+# required package
+library(pwr)
+```
+
+```{r}
+# calculate sample size
+# result: 40 people in total
+P1=0.5 # 50% of people will click buy for the version with model
+P2=0.1 # 10% of people will click buy for the version without model
+power.prop.test(n =, p1 = P1, p2 = P2, sig.level = 0.05, power = 0.8, alternative = c("two.sided"))
+```
+
+```{r}
+# check the significance level
+# when the sample size in each group is 20, the significance level is below 0.05
+power.prop.test(n = 20, p1 = P1, p2 = P2, sig.level =NULL, power = 0.8, alternative = c("two.sided"))
+```
+
+```{r}
+# check the power
+# when the sample size in each group is 20, the power is above 0.8
+power.prop.test(n = 20, p1 = P1, p2 = P2, sig.level = 0.05, power =NULL, alternative = c("two.sided"))
+```
+
